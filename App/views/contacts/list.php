@@ -7,7 +7,7 @@ $this->addPageSpecificCss('dataTables.bootstrap.min.css')
 ?>
 
 <div class="col-md-12">
-    <a class="btn btn-default" href="/contacts/import">Import Contacts</a>
+    <a class="btn btn-default" href="<?php echo $this->getBaseUrl() ?>contacts/import">Import Contacts</a>
 </div>
 <br /><br /><br />
 <div class="col-md-12">
