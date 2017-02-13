@@ -9,7 +9,7 @@ examplle
 	ServerName contacts.local
 </VirtualHost>
 
-127.0.0.1 contacts.local - windows hosts
+127.0.0.1 contacts.local
 
 3. Import demo database located at contacts/dt_contacts.sql
 
