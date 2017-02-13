@@ -56,19 +56,19 @@ class Router
      */
     private function validate()
     {
-//        if (!file_exists(__DIR__ . '/../App/Controllers/' . $this->getController() . '.php')) {
-//            throw new RouteNotFoundException();
-//        }
-//
-//        if (!class_exists("\App\\Controllers\\" . $this->getController())) {
-//           // throw new RouteNotFoundException();
-//            var_dump(new Index());
-//            die;
-//        }
-//
-//        if (!method_exists("App\\Controllers\\" . $this->getController(), $this->getAction())) {
-//            throw new RouteNotFoundException('Method ' . "App\\Controllers\\" . $this->getController() . '::' . $this->getAction() );
-//        }
+        if (!file_exists(__DIR__ . '/../App/Controllers/' . $this->getController() . '.php')) {
+            throw new RouteNotFoundException();
+        }
+
+        if (!class_exists("\App\\Controllers\\" . $this->getController())) {
+           // throw new RouteNotFoundException();
+            var_dump(new Index());
+            die;
+        }
+
+        if (!method_exists("App\\Controllers\\" . $this->getController(), $this->getAction())) {
+            throw new RouteNotFoundException('Method ' . "App\\Controllers\\" . $this->getController() . '::' . $this->getAction() );
+        }
     }
 
     /**
