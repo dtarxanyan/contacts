@@ -39,7 +39,7 @@ class Process extends BaseModel
      */
     public function updateCompletedCount($params)
     {
-        $sql = "UPDATE " . self::TABLE_NAME . " SET completed_count = :completed_count"
+        $sql = "UPDATE " . self::TABLE_NAME . " SET completed_count = :completed_count, failed_count = :failed_count"
             . " WHERE process_id = :process_id AND status = 0";
 
         return $this->query($sql, $params);
@@ -47,12 +47,17 @@ class Process extends BaseModel
 
     /**
      * @param string $processId
+     * @param bool $success
      * @return bool
      */
-    public function end($processId)
+    public function end($processId, $success = true)
     {
-        $sql = "UPDATE " . self::TABLE_NAME . " SET status = 1 WHERE status=0 AND process_id = :id";
-        return $this->query($sql, ['id' => $processId]);
+        $sql = "UPDATE " . self::TABLE_NAME . " SET status=1, success=:success WHERE status=0 AND process_id = :id";
+
+        return $this->query($sql, [
+            'id' => $processId,
+            'success' => (int)$success,
+        ]);
     }
 
     /**
@@ -61,7 +66,7 @@ class Process extends BaseModel
      */
     public function getOngoingProcess($procId)
     {
-        $sql = "SELECT total_count, completed_count FROM " . self::TABLE_NAME . " WHERE process_id = :id AND status=0";
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE process_id = :id";
         return $this->find($sql, ['id' => $procId]);
     }
 }

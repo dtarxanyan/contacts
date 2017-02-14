@@ -93,7 +93,7 @@ class Contacts extends Controller
                     $options = [
                         FileValidation::OPTION_ALLOWED_EXT => $allowedExt,
                         FileValidation::OPTION_ALLOWED_TYPES => $allowedTypes,
-                        FileValidation::OPTION_MAX_SIZE => 60,
+                        FileValidation::OPTION_MAX_SIZE => 2,
                     ];
 
                     if ($validator->validate($newPath, $options)) {
@@ -165,7 +165,8 @@ class Contacts extends Controller
             $result = [
                 'status' => 1,
                 'total_count' => $info['total_count'],
-                'completed_count' => $info['completed_count']
+                'completed_count' => $info['completed_count'],
+                'failed_count' =>  $info['failed_count'],
             ];
         } else {
             $result = ['status' => 0];
