@@ -61,13 +61,11 @@ class Router
         }
 
         if (!class_exists("\App\\Controllers\\" . $this->getController())) {
-           // throw new RouteNotFoundException();
-            var_dump(new Index());
-            die;
+            throw new RouteNotFoundException();
         }
 
         if (!method_exists("App\\Controllers\\" . $this->getController(), $this->getAction())) {
-            throw new RouteNotFoundException('Method ' . "App\\Controllers\\" . $this->getController() . '::' . $this->getAction() );
+            throw new RouteNotFoundException('Method ' . "App\\Controllers\\" . $this->getController() . '::' . $this->getAction());
         }
     }
 

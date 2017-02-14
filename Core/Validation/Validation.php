@@ -8,6 +8,9 @@ abstract class Validation
 
     abstract protected function validate($value, $options = []);
 
+    /**
+     * @return mixed
+     */
     public function getErrorMessage() {
         return $this->errorMessage;
     }

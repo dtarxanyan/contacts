@@ -40,7 +40,6 @@ class LoginForm extends BaseModel
 
             $data = $this->find($sql, ['email' => $this->email], \PDO::FETCH_ASSOC);
 
-
             if ($data) {
                 $hashPassword = $data['password'];
                 if (Hash::compare($this->password, $hashPassword)) {
@@ -53,7 +52,6 @@ class LoginForm extends BaseModel
             }
 
             return $result;
-
         }
 
         return $result;

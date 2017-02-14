@@ -75,6 +75,9 @@ abstract class BaseController
         $this->uploadsFolder = $uploadsFolder;
     }
 
+    /**
+     * @param string $route
+     */
     protected function redirect($route)
     {
         header('Location: ' . $this->getBaseUrl() . $route);

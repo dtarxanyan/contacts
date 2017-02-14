@@ -52,9 +52,11 @@ class HtmlResponse extends AbstractResponse
         require $this->getLayout();
 
 
-
     }
 
+    /**
+     * @throws \Exception
+     */
     private function checkFilesExist()
     {
         if (!file_exists($this->getLayout())) {
@@ -62,7 +64,7 @@ class HtmlResponse extends AbstractResponse
         }
 
         if (!file_exists($this->getView())) {
-           // throw new \Exception('View file does not exist: ' . $this->getView());
+            throw new \Exception('View file does not exist: ' . $this->getView());
         }
 
     }

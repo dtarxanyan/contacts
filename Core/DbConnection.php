@@ -13,6 +13,9 @@ class DbConnection
     {
     }
 
+    /**
+     * @return null|\PDO
+     */
     public static function getConnection()
     {
         if (self::$connection === null) {

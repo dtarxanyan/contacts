@@ -10,7 +10,6 @@
     <meta name="author" content="">
 
     <title>Contacts</title>
-    <!-- Bootstrap Core CSS -->
     <link href="<?php echo $this->getAssetsPath(); ?>css/bootstrap.min.css" rel="stylesheet">
     <?php foreach ($this->getPageSpecificCss() as $css) { ?>
         <link href="<?php echo $this->getAssetsPath(); ?>css/pages/<?php echo $css ?>" rel="stylesheet">

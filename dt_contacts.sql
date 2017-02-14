@@ -98,3 +98,13 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;SET FOREIGN_KEY_CHECKS=1;
 
 ALTER TABLE `contacts` ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+CREATE TABLE `processes` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `process_id` char(32) NOT NULL,
+  `type` varchar(60) NOT NULL,
+  `total_count` int(7) NOT NULL,
+  `completed_count` int(7) NOT NULL,
+  `status` tinyint(1) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

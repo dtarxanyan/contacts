@@ -30,7 +30,7 @@ abstract class Controller extends BaseController
     /**
      * @param $name
      * @param mixed $default
-     * @param bool $returnDefaultEmpty
+     * @param bool $returnDefaultIfEmpty
      * @return mixed
      */
     protected function getPost($name, $default = null, $returnDefaultIfEmpty = true)

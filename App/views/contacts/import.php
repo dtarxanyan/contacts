@@ -5,11 +5,16 @@ $this->addPageSpecificCss('upload-contacts.css')
     ->addPageSpecificJs('upload-contacts.js');
 ?>
 <div class="col-lg-12 text-center">
-    <form id="upload" method="post" action="contacts/upload" enctype="multipart/form-data">
+    <form id="upload" method="post" action="/contacts/upload" enctype="multipart/form-data">
+
+        <div id="alert" class="alert alert-dismissible" role="alert">
+            <span id="alert-message"></span>
+        </div>
+
         <div id="drop">
             Drop Here
             <a>Browse</a>
-            <input type="file" name="contacts"/>
+            <input type="file" name="contacts" />
         </div>
 
         <div class="progress hidden">

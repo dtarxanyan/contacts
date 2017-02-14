@@ -6,7 +6,8 @@ use Core\Response\HtmlResponse;
 use Core\Exception\RouteNotFoundException;
 
 
-class Application {
+class Application
+{
     private static $config;
 
     /**
@@ -19,9 +20,9 @@ class Application {
      */
     private $baseUrl;
 
-    CONST EXCEPTIONS_CONTROLLER = 'exceptions';
-    CONST EXCEPTION_ACTION = 'exception';
-    CONST EXCEPTION_NOT_FOUND_ACTION = 'page404';
+    const EXCEPTIONS_CONTROLLER = 'exceptions';
+    const EXCEPTION_ACTION = 'exception';
+    const EXCEPTION_NOT_FOUND_ACTION = 'page404';
 
     public static function setConfig()
     {
@@ -44,6 +45,7 @@ class Application {
         throw new \Exception('Configuration with given key does not exist');
 
     }
+
     public function __construct()
     {
         self::setConfig();
@@ -53,7 +55,6 @@ class Application {
 
     public function start()
     {
-        // TODO: create session component
         session_start();
 
         try {
@@ -61,20 +62,23 @@ class Application {
              * @var  \Core\BaseController $controllerInstance
              */
             $this->router->dispatch();
-            $controllerName = "App\\Controllers\\"  .$this->router->getController();
+            $controllerName = "App\\Controllers\\" . $this->router->getController();
             $controllerInstance = new $controllerName();
             $controllerInstance->setBaseUrl($this->getBaseUrl());
             $respObj = call_user_func([$controllerInstance, $this->router->getAction()]);
             $this->checkAndRenderView($respObj, $controllerInstance);
         } catch (RouteNotFoundException $e) {
             $this->redirect(self::EXCEPTIONS_CONTROLLER, self::EXCEPTION_NOT_FOUND_ACTION);
-        }
-        catch (\Exception $e) {
-           $this->handleException($e);
+        } catch (\Exception $e) {
+            $this->handleException($e);
         }
 
     }
 
+    /**
+     * @param string $controller
+     * @param string $action
+     */
     private function redirect($controller = Router::DEFAULT_CONTROLLER, $action = Router::DEFAULT_ACTION)
     {
         header('Location: ' . $this->getBaseUrl() . $controller . '/' . $action);
@@ -95,14 +99,15 @@ class Application {
             $respObj
                 ->setLayout(strtolower($controllerInstance->getLayout()))
                 ->setView(strtolower($this->router->getController()) . '/' . strtolower($this->router->getAction()))
-                ->setBaseUrl($this->getBaseUrl())
-            ;
+                ->setBaseUrl($this->getBaseUrl());
         }
 
         $respObj->render();
     }
 
-
+    /**
+     * @param \Exception $e
+     */
     private function handleException(\Exception $e)
     {
         $respObj = new HtmlResponse(['exception' => $e]);
@@ -143,6 +148,4 @@ class Application {
     {
         $this->router = $router;
     }
-
-
 }

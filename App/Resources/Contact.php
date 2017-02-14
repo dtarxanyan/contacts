@@ -5,6 +5,10 @@ use App\Models\Contact as ContactModel;
 
 class Contact
 {
+    /**
+     * @param array $data
+     * @return array
+     */
     public static function getList($data = [])
     {
         $criteria = [];

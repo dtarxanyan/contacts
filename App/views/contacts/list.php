@@ -1,11 +1,9 @@
 <?php
-
 $this->addPageSpecificCss('dataTables.bootstrap.min.css')
     ->addPageSpecificJs('jquery.datatables.min.js')
     ->addPageSpecificJs('DT_bootstrap.js')
     ->addPageSpecificJs('contact-list.js');
 ?>
-
 <div class="col-md-12">
     <a class="btn btn-default" href="<?php echo $this->getBaseUrl() ?>contacts/import">Import Contacts</a>
 </div>

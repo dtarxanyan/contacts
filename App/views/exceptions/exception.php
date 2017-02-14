@@ -6,4 +6,6 @@
 <strong>
     Trace
 </strong> <br>
-<p><?php var_dump($exception->getTrace());?></p>
+<pre>
+    <?php print_r($exception->getTrace());?>
+</pre>

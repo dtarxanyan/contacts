@@ -7,11 +7,21 @@ use Core\BaseController;
 
 class Exceptions extends BaseController
 {
-    public function page404() {
+    /**
+     * Render 404 page
+     * @return HtmlResponse
+     */
+    public function page404()
+    {
         return new HtmlResponse();
     }
 
-    public function error(){
-        //return new HtmlResponse();
+    /**
+     * Render errors
+     * @return HtmlResponse
+     */
+    public function error()
+    {
+        return new HtmlResponse();
     }
 }

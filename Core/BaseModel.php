@@ -170,11 +170,16 @@ abstract class BaseModel
      * @param array $params
      * @return bool
      */
-    protected function query($sql)
+    protected function query($sql, $params = [])
     {
-        return $this->connection->query($sql);
+        $sth = $this->connection->prepare($sql);
+        return $sth->execute($params);
     }
 
+    /**
+     * @param arrray $criteria
+     * @return string
+     */
     protected function createQueryFromCriteria($criteria)
     {
         $select = $criteria['select'] . ' FROM ' . $criteria['from'];

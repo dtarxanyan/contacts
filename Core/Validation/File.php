@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: David
- * Date: 2/12/2017
- * Time: 10:23 PM
- */
 
 namespace Core\Validation;
 

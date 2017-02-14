@@ -13,6 +13,10 @@ class Site extends Controller
         'login'
     ];
 
+    /**
+     * User login
+     * @return HtmlResponse
+     */
     public function login()
     {
         $model = new LoginForm();
@@ -22,7 +26,6 @@ class Site extends Controller
             $model->password = $_POST['LoginForm']['password'];
 
             if ($model->login()) {
-                // TODO: create session component
                 $_SESSION['login'] = 1;
                 $_SESSION['email'] = $model->email;
                 $this->redirect('contacts/list');
@@ -34,11 +37,12 @@ class Site extends Controller
         ]);
     }
 
+    /**
+     * User logout
+     */
     public function logout()
     {
-        // TODO: create session component
-        unset($_SESSION['login']);
-        unset($_SESSION['email']);
+        session_destroy();
         $this->redirect('site/login');
     }
 }
